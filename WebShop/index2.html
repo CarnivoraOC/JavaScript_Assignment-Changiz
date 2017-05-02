@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<script src="js/jsCookie.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<title>basket</title>
+
+</head>
+    
+<body>
+
+<div id="containerBasket">
+
+    <header>
+        <button class="menu-btn" id="tilbakeBtn" onclick="history.go(-1);">Back to Webshop</button>
+    </header>
+    
+    <section>
+        <p class="basketList" id="basket">Your basket:</p>
+        <p class="basketList" id="total"></p>
+    </section>
+
+</div>
+    
+<script>
+    
+var basket;
+var price = [29, 39, 49, 59];
+var total;
+
+var init = (function(){ //start init 
+    
+    var initiateHTMLObjects = function(){
+        basket = document.getElementById("basket");
+        total = document.getElementById("total");
+    }();
+    
+    var readCookie = function(){            
+        var innhold = document.cookie.split("=")[1];
+        var split = innhold.split(",");
+            if(innhold!= ''){
+                for(var i = 0; i < 4; i++){
+                    newProductArray[i] = parseInt(split[i]);
+                }
+            }
+        makeList();
+    }();
+
+    function makeList(){ 
+        for(var i = 0; i < 4; i++){
+            var numberOfProducts = newProductArray[i];
+            if(numberOfProducts > 0){
+                basket.innerHTML += "<div class='handlevogn-elementer'><img class='img-basket' src=\"" + bilde[i] + "\"/><p class'p-basket'>"+ tittel[i] +" (" +numberOfProducts+ ") - totalprice: " +numberOfProducts*price[i]+",-</p></div>";
+            }
+        }
+        sumTotal();
+    }
+        
+    function sumTotal(){ 
+        for(var i = 0; i < 4; i++){
+            var numberOfProducts = newProductArray[i];
+            if(numberOfProducts > 0){
+                totalsum += numberOfProducts*price[i];
+            }       
+        }
+         total.innerHTML = "Your Totalsum is " + totalsum + " kr";
+    }
+        
+}()); // end init
+ 
+</script>
+
+</body>
+</html>

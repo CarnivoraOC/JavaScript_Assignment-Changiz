@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link type="text/css" href="css/style.css" rel="stylesheet">
+    <title>Oppgave 1</title>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Brainstorm App</h1>
+        <div class="inputContainer">
+            <p id="textTitle">Create Title</p>
+            <input type="text" id="title">
+            <button onclick="createTitle()">Create</button>
+            <br>
+            <p id="textTitle">Create Idea</p>
+            <input type="text" id="generateIdea">
+            <button onclick="createIdea()">Create</button>
+        </div>
+        <h3 id="h3Title">What to do on a lazy Sunday</h3>
+        <h4>Ideas</h4>
+        <p id="ideas"></p>
+        <h4>Discarded</h4>
+        <p id="discarded"></p>
+    </div>
+    <script>
+        function createTitle() {
+            var title = document.getElementById("title").value;
+            if (title == "") {
+                alert("Du må skrive noe");
+            }
+            else {
+                document.getElementById("h3Title").innerHTML = title;
+            }
+        }
+
+        function createIdea() {
+            var generate = document.getElementById("generateIdea").value;
+            if (generate == "") {
+                alert("Du må skrive noeeee");
+            }
+            else {
+                var newIdea = document.createElement("ideas");
+                newIdea.style.display = "block";
+                newIdea.innerHTML = document.getElementById("generateIdea").value;
+                document.getElementById("ideas").appendChild(newIdea);
+                newIdea.onclick = moveIdea;
+            }
+        }
+
+        function moveIdea() {
+            if (this.parentNode.id == "ideas") {
+                document.getElementById("discarded").appendChild(this);
+            }
+            else document.getElementById("ideas").appendChild(this);
+        }
+    </script>
+</body>
+
+</html>

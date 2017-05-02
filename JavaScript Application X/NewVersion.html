@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>New HMTL document by NewJect</title>
+</head>
+
+<body id="background">
+    <div id="mainContainer">
+        <main>
+            <h3 id="title">Undead Crypt</h3> <img id="currentPicture" src="img/undeadCrypt.jpg">
+            <p id="currentText">You awake from your deep slumber, dazed and confused you recall a faint memory of someone you love; waiting for you</p>
+            <div id="buttonContainer">
+                <button class="buttons" id="northBtn">North</button>
+                <button class="buttons" id="westBtn">West</button>
+                <button class="buttons" id="eastBtn">East</button>
+                <button class="buttons" id="southBtn">South</button>
+            </div>
+        </main>
+    </div>
+</body>
+<script>
+    var place = "undeadCrypt";
+    var mainContainer;
+    var buttonContainer;
+    var background;
+    var title;
+    var currentPicture;
+    var currentText;
+    var buttons;
+    var northBtn, westBtn, eastBtn, southBtn;
+    var direction = ["North", "West", "East", "South"];
+    var init = function () {
+        var setHTMLObjects = function () {
+            //html objects
+            mainContainer = document.getElementById("mainContainer");
+            buttonContainer = document.getElementById("buttonContainer");
+            background = document.getElementById("background");
+            //storyboard
+            title = document.getElementById("title");
+            currentPicture = document.getElementById("currentPicture");
+            currentText = document.getElementById("currentText");
+            //buttons
+            buttons = document.getElementsByClassName("buttons");
+            northBtn = document.getElementById("northBtn");
+            westBtn = document.getElementById("westBtn");
+            eastBtn = document.getElementById("eastBtn");
+            southBtn = document.getElementById("southBtn");
+        }();
+        var setEvents = function () {
+            northBtn.onclick = moveNorth;
+            westBtn.onclick = moveWest;
+            eastBtn.onclick = moveEast;
+            southBtn.onclick = moveSouth;
+        }();
+        var setGUI = function () {
+            mainStyle();
+        }();
+    }();
+    // movement functions
+    function moveNorth() {
+        if (place == "undeadCrypt") {
+            title.innerHTML = "Skeleton Furiously Charging at You!";
+            currentPicture.src = "img/skeleton.jpg";
+            currentText.innerHTML = "You feel the sword pierce your stomach and slowly you are bleeding out";
+            northBtn.innerHTML = "Start Over";
+            westBtn.style.visibility = "hidden";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "skeleton";
+        }
+        else if (place == "skeleton") {
+            title.innerHTML = "Undead Crypt";
+            currentPicture.src = "img/undeadCrypt.jpg";
+            currentText.innerHTML = "You awake from your deep slumber, dazed and confused you recall a faint memory of someone you love; waiting for you";
+            northBtn.innerHTML = "North";
+            westBtn.style.visibility = "visible";
+            eastBtn.style.visibility = "visible";
+            southBtn.style.visibility = "visible";
+            place = "undeadCrypt";
+        }
+        else if (place == "zombie") {
+            title.innerHTML = "Undead Crypt";
+            currentPicture.src = "img/undeadCrypt.jpg";
+            currentText.innerHTML = "You awake from your deep slumber, dazed and confused you recall a faint memory of someone you love; waiting for you";
+            northBtn.innerHTML = "North";
+            westBtn.style.visibility = "visible";
+            eastBtn.style.visibility = "visible";
+            southBtn.style.visibility = "visible";
+            place = "undeadCrypt";
+        }
+        else if (place == "undeadDoor2") {
+            title.innerHTML = "Beautiful river, with a faint of rainbow at the end";
+            currentPicture.src = "img/river.jpg";
+            currentText.innerHTML = "You hear the powerful water-stream of the river and gazing around; you see a golden glimmer way north..";
+            northBtn.innerHTML = "North";
+            westBtn.style.visibility = "hidden";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "visible";
+            place = "river";
+        }
+        else if (place == "river") {
+            title.innerHTML = "The golden shimmer overwhelmes your eyes!";
+            currentPicture.src = "img/gold.jpg";
+            currentText.innerHTML = "You feel a sense of deep temptation seeing the golden crown, you want to reach for it, but there is faint whisper in your consciousness which warns you...."
+            northBtn.innerHTML = "Take it";
+            westBtn.innerHTML = "Go Back";
+            westBtn.style.visibility = "visible";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "gold";
+        }
+        else if (place == "gold") {
+            title.innerHTML = "The golden lie";
+            currentPicture.src = "img/goldcorrupt.jpg";
+            currentText.innerHTML = "You touch the crown... but something is different, you feel heavy and you see the gold corrupt your body inch by inch"
+            northBtn.innerHTML = "Start Over";
+            westBtn.style.visibility = "hidden";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "goldCorrupt";
+        }
+        else if (place == "goldCorrupt") {
+            title.innerHTML = "Undead Crypt";
+            currentPicture.src = "img/undeadCrypt.jpg";
+            currentText.innerHTML = "You awake from your deep slumber, dazed and confused you recall a faint memory of someone you love; waiting for you";
+            northBtn.innerHTML = "North";
+            westBtn.innerHTML = "West";
+            westBtn.style.visibility = "visible";
+            eastBtn.style.visibility = "visible";
+            southBtn.style.visibility = "visible";
+            place = "undeadCrypt";
+        }
+        else if (place == "church") {
+            title.innerHTML = "Angelic Presence";
+            currentPicture.src = "img/angel.jpg";
+            currentText.innerHTML = "A beutiful angel decends upon you and reaches for you";
+            northBtn.innerHTML = "Embrace";
+            westBtn.innerHTML = "Attack";
+            westBtn.style.visibility = "visible";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "angel";
+        }
+        else if (place == "angel") {
+            title.innerHTML = "The Pearly Gates";
+            currentPicture.src = "img/heaven.jpg";
+            currentText.innerHTML = "You ascend into heaven and you feel a sense of belonging and at rest";
+            northBtn.innerHTML = "Start Over";
+            westBtn.style.visibility = "hidden";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "heaven";
+        }
+        else if (place == "heaven") {
+            title.innerHTML = "Undead Crypt";
+            currentPicture.src = "img/undeadCrypt.jpg";
+            currentText.innerHTML = "You awake from your deep slumber, dazed and confused you recall a faint memory of someone you love; waiting for you";
+            northBtn.innerHTML = "North";
+            westBtn.innerHTML = "West";
+            westBtn.style.visibility = "visible";
+            eastBtn.style.visibility = "visible";
+            southBtn.style.visibility = "visible";
+            place = "undeadCrypt";
+        }
+        else if (place == "devil") {
+            title.innerHTML = "Undead Crypt";
+            currentPicture.src = "img/undeadCrypt.jpg";
+            currentText.innerHTML = "You awake from your deep slumber, dazed and confused you recall a faint memory of someone you love; waiting for you";
+            northBtn.innerHTML = "North";
+            westBtn.innerHTML = "West";
+            westBtn.style.visibility = "visible";
+            eastBtn.style.visibility = "visible";
+            southBtn.style.visibility = "visible";
+            place = "undeadCrypt";
+        }
+        else if (place == "undeadDoor") {
+            title.innerHTML = "Breathtaking forest, wtih a soothing breeze";
+            currentPicture.src = "img/forest.jpg";
+            currentText.innerHTML = "This huge forest envolps your entire field of view, and you feel certain a spritual presence";
+            northBtn.innerHTML = "North";
+            westBtn.innerHTML = "West";
+            eastBtn.style.visibility = "visible";
+            southBtn.style.visibility = "hidden";
+            place = "forest";
+        }
+        else if (place == "forest") {
+            title.innerHTML = "Pack wolves furiously charges you";
+            currentPicture.src = "img/wolf.jpg";
+            currentText.innerHTML = "Each bite tears of chunks of your flesh, slowly being devoured";
+            northBtn.innerHTML = "Start Over";
+            westBtn.style.visibility = "hidden";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "wolf";
+        }
+        else if (place == "wolf") {
+            title.innerHTML = "Undead Crypt";
+            currentPicture.src = "img/undeadCrypt.jpg";
+            currentText.innerHTML = "You awake from your deep slumber, dazed and confused you recall a faint memory of someone you love; waiting for you";
+            northBtn.innerHTML = "North";
+            westBtn.innerHTML = "West";
+            westBtn.style.visibility = "visible";
+            eastBtn.style.visibility = "visible";
+            southBtn.style.visibility = "visible";
+            place = "undeadCrypt";
+        }
+        else if (place == "goblin") {
+            title.innerHTML = "Undead Crypt";
+            currentPicture.src = "img/undeadCrypt.jpg";
+            currentText.innerHTML = "You awake from your deep slumber, dazed and confused you recall a faint memory of someone you love; waiting for you";
+            northBtn.innerHTML = "North";
+            westBtn.innerHTML = "West";
+            westBtn.style.visibility = "visible";
+            eastBtn.style.visibility = "visible";
+            southBtn.style.visibility = "visible";
+            place = "undeadCrypt";
+        }
+        else if (place == "troll") {
+            title.innerHTML = "Breathtaking forest, wtih a soothing breeze";
+            currentPicture.src = "img/forest.jpg";
+            currentText.innerHTML = "This huge forest envolps your entire field of view, and you feel certain spritual presence";
+            northBtn.innerHTML = "North";
+            westBtn.innerHTML = "South";
+            eastBtn.style.visibility = "visible";
+            southBtn.style.visibility = "hidden";
+            place = "forest";
+        }
+        else if (place == "mountain") {
+            title.innerHTML = "Terrifying dragon approaches";
+            currentPicture.src = "img/dragon.jpg";
+            currentText.innerHTML = "It's deafining screech puts you of balance. You see an old trebuchet already loaded and aimed at the dragon...";
+            northBtn.innerHTML = "Attack";
+            westBtn.style.visibility = "hidden";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "dragon";
+        }
+        else if (place == "dragon") {
+            title.innerHTML = "Finally Reunited";
+            currentPicture.src = "img/love.jpg";
+            currentText.innerHTML = "Bright light engulfs the dragon, it transforms into someone you find familiar... As you adjust; you realize it is your long lost love";
+            northBtn.innerHTML = "Start Over";
+            westBtn.style.visibility = "hidden";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "love";
+        }
+        else if (place == "love") {
+            title.innerHTML = "Undead Crypt";
+            currentPicture.src = "img/undeadCrypt.jpg";
+            currentText.innerHTML = "You awake from your deep slumber, dazed and confused you recall a faint memory of someone you love; waiting for you";
+            northBtn.innerHTML = "North";
+            westBtn.innerHTML = "West";
+            westBtn.style.visibility = "visible";
+            eastBtn.style.visibility = "visible";
+            southBtn.style.visibility = "visible";
+            place = "undeadCrypt";
+        }
+    }
+
+    function moveWest() {
+        if (place == "undeadCrypt") {
+            title.innerHTML = "Cave exit....?";
+            currentPicture.src = "img/undeadDoor.jpg";
+            currentText.innerHTML = "You come across a humongous cave door, and you can see a faint glimmer of light at the end...";
+            northBtn.innerHTML = "Exit Cave";
+            westBtn.innerHTML = "Go Back";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "undeadDoor";
+        }
+        else if (place == "undeadDoor") {
+            title.innerHTML = "Undead Crypt";
+            currentPicture.src = "img/undeadCrypt.jpg";
+            currentText.innerHTML = "You awake from your deep slumber, dazed and confused you recall a faint memory of someone you love; waiting for you";
+            northBtn.innerHTML = "North";
+            westBtn.innerHTML = "West";
+            eastBtn.style.visibility = "visible";
+            southBtn.style.visibility = "visible";
+            place = "undeadCrypt";
+        }
+        else if (place == "gold") {
+            title.innerHTML = "Beautiful river, with a faint of rainbow at the end";
+            currentPicture.src = "img/river.jpg";
+            currentText.innerHTML = "You hear the powerful water-stream of the river and gazing around; you see a golden glimmer way north..";
+            northBtn.innerHTML = "North";
+            westBtn.innerHTML = "West";
+            westBtn.style.visibility = "hidden";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "visible";
+            place = "river";
+        }
+        else if (place == "angel") {
+            title.innerHTML = "The pit";
+            currentPicture.src = "img/devil.jpg";
+            currentText.innerHTML = "The fiery demon, touches upon your shoulder. Engulfed in fire, the fire burns away your soul, Reborn as a mighty champion; hungry for more power";
+            northBtn.innerHTML = "Start Over";
+            westBtn.style.visibility = "hidden";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "devil";
+        }
+        else if (place == "forest") {
+            title.innerHTML = "Ambushed by a sneaky goblin";
+            currentPicture.src = "img/goblin.jpg";
+            currentText.innerHTML = "Several arrows punctures your heart.... everything is fading";
+            northBtn.innerHTML = "Start Over";
+            westBtn.style.visibility = "hidden";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "goblin";
+        }
+        else if (place == "troll") {
+            title.innerHTML = "Mountain";
+            currentPicture.src = "img/mountain.jpg";
+            northBtn.innerHTML = "Forward";
+            westBtn.style.visibility = "hidden";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "mountain";
+        }
+    }
+
+    function moveEast() {
+        if (place == "undeadCrypt") {
+            title.innerHTML = "An undead sneaks up and attacks you from the shadows";
+            currentPicture.src = "img/zombie.jpg";
+            currentText.innerHTML = "The undead grabs your neck and snaps it with massive force"
+            northBtn.innerHTML = "Start Over";
+            westBtn.style.visibility = "hidden";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "zombie";
+        }
+        else if (place == "forest") {
+            title.innerHTML = "The dumbfounded troll";
+            currentPicture.src = "img/troll.jpg";
+            currentText.innerHTML = "The troll catches your gaze, with each step your a powerful boom. The dumbfounded beast is so slow, you can either make run for it or turn back";
+            northBtn.innerHTML = "Go Back";
+            westBtn.innerHTML = "Run!!";
+            westBtn.style.visibility = "visible";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "troll";
+        }
+    }
+
+    function moveSouth() {
+        if (place == "undeadCrypt") {
+            title.innerHTML = "Cave exit...";
+            currentPicture.src = "img/undeadDoor2.jpg";
+            currentText.innerHTML = "As you trudge past the tomb you woke from, you can see a cave leading outside, there is a faint sound of a water stream";
+            northBtn.innerHTML = "Enter";
+            westBtn.style.visibility = "hidden";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "undeadDoor2";
+        }
+        else if (place == "river") {
+            title.innerHTML = "You stumble upon a beautiful church";
+            currentPicture.src = "img/church.jpg";
+            currentText.innerHTML = "Something deep inside you as a being, urges you to enter the church";
+            northBtn.innerHTML = "Enter";
+            westBtn.style.visibility = "hidden";
+            eastBtn.style.visibility = "hidden";
+            southBtn.style.visibility = "hidden";
+            place = "church";
+        }
+    }
+
+    function mainStyle() {
+        mainContainer.style.width = "1000px";
+        mainContainer.style.height = "700px";
+        mainContainer.style.margin = "auto";
+        mainContainer.style.backgroundColor = "white";
+        mainContainer.style.border = "solid 1px rgb(50, 50, 50)";
+        mainContainer.style.borderRadius = "25px";
+        title.style.textAlign = "center";
+        title.style.fontFamily = "Roboto Slab";
+        currentPicture.style.height = "500px";
+        currentPicture.style.width = "650px";
+        currentPicture.style.display = "block";
+        currentPicture.style.margin = "auto";
+        currentPicture.style.borderRadius = "25px";
+        currentText.style.textAlign = "center";
+        background.style.backgroundColor = "black";
+        buttonContainer.style.margin = "auto";
+        buttonContainer.style.width = "250px";
+        buttonContainer.style.height = "74px";
+        buttonContainer.style.border = "solid 2px rgb(50, 50, 50)";
+        buttonContainer.style.backgroundColor = "black";
+        northBtn.style.display = "block";
+        northBtn.style.border = "none";
+        northBtn.style.padding = "10px";
+        northBtn.style.fontSize = "15px";
+        northBtn.style.width = "50%";
+        northBtn.style.float = "left";
+        northBtn.style.backgroundColor = "black";
+        northBtn.style.color = "white";
+        westBtn.style.display = "block";
+        westBtn.style.border = "none";
+        westBtn.style.padding = "10px";
+        westBtn.style.fontSize = "15px";
+        westBtn.style.width = "50%";
+        westBtn.style.float = "left";
+        westBtn.style.backgroundColor = "black";
+        westBtn.style.color = "white";
+        eastBtn.style.display = "block";
+        eastBtn.style.border = "none";
+        eastBtn.style.padding = "10px";
+        eastBtn.style.fontSize = "15px";
+        eastBtn.style.width = "50%";
+        eastBtn.style.float = "right";
+        eastBtn.style.backgroundColor = "black";
+        eastBtn.style.color = "white";
+        southBtn.style.display = "block";
+        southBtn.style.border = "none";
+        southBtn.style.padding = "10px";
+        southBtn.style.fontSize = "15px";
+        southBtn.style.width = "50%";
+        southBtn.style.float = "right";
+        southBtn.style.backgroundColor = "black";
+        southBtn.style.color = "white";
+    }
+</script>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="js/jsCookie.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Webshop</title>
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <input id="basketBtn" type="button" class="menu-btn" onclick="location.href = 'index2.html';createCookie()" value="The Basket (0)" /> </header>
+        <section>
+            <div id="products"> </div>
+        </section>
+    </div>
+    <script>
+        var buyBtn = ["colaBtn", "pepsiBtn", "fantaBtn", "spriteBtn"];
+        var products;
+        var basketBtn;
+        var init = function () { //start init 
+            var createHTMLObjects = function () {
+                products = document.getElementById("products");
+                basketBtn = document.getElementById("basketBtn");
+            }();
+            var createProducts = function () {
+                for (var i = 0; i < 4; i++) {
+                    var product = document.createElement("div");
+                    product.className = "product-box";
+                    product.innerHTML = "<div> <img class='img-responsive' src=\"" + bilde[i] + "\"/></div> <div class='info-div'> <h4 class='product-tittel' >" + tittel[i] + "</h4> <br> <h4 class='product-price' >" + price[i] + "</h4> <input id=\"" + buyBtn[i] + "\" type='button' onClick='iBasket(this.id)' value='Add to basket' class='buy-btn'/> </div>";
+                    products.appendChild(product);
+                }
+            }();
+        }(); // end init
+        function iBasket(obj) { //updates array and numbProducts
+            var id = obj;
+            if (id == "colaBtn") {
+                productArray[0]++;
+                colaBtn.value = "Another one";
+                colaBtn.style.backgroundColor = "#2A3132";
+            }
+            else if (id == "pepsiBtn") {
+                productArray[1]++;
+                pepsiBtn.value = "Another one";
+                pepsiBtn.style.backgroundColor = "#2A3132";
+            }
+            else if (id == "fantaBtn") {
+                productArray[2]++;
+                fantaBtn.value = "Another one";
+                fantaBtn.style.backgroundColor = "#2A3132";
+            }
+            else if (id == "spriteBtn") {
+                productArray[3]++;
+                spriteBtn.value = "Another one";
+                spriteBtn.style.backgroundColor = "#2A3132";
+            }
+            numbProducts++;
+            updateProducts();
+        }
+
+        function updateProducts() {
+            basketBtn.value = "The Basket (" + numbProducts + ")";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,317 @@
+/* START MEYER´S RESET 
+   http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* END MEYER´S RESET */
+
+
+/*- START Alt generelt -*/
+
+.menu-btn {
+    background-color: #2A3132;
+    border: none;
+    color: white;
+    padding: 20px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
+
+
+/*- SLUTT Alt generelt -*/
+
+
+/*- START Webshop generelt -*/
+
+#container {
+    width: 770px;
+    height: auto;
+    overflow: auto;
+    background-color: #336B87;
+    margin: auto;
+}
+
+
+/*- SLUTT Webshop generelt -*/
+
+
+/*- START Webshop productbokser generelt -*/
+
+#products {
+    width: 100%;
+    margin: auto;
+}
+
+.product-box {
+    width: 50%;
+    margin-bottom: 0%;
+    height: auto;
+    background-color: white;
+    float: left;
+}
+
+.img-responsive {
+    /*width: 100%;*/
+    width: 250px;
+    height: 250px;
+    /*margin: 5%; */
+}
+
+
+/*- SLUTT Webshop productbokser generelt -*/
+
+
+/*- START Webshop productbokser spesifikt -*/
+
+.buy-btn {
+    background-color: #336B87;
+    border: none;
+    color: white;
+    padding: 20px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    width: 280px;
+    /*width: 100%;*/
+}
+
+.info-div {
+    height: 100px;
+    width: 100%;
+    font-family: sans-serif;
+}
+
+.product-tittel {
+    display: inline;
+    color: #2A3132;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.product-price {
+    display: inline;
+    color: black;
+    font-size: 30px;
+}
+
+
+/*- SLUTT Webshop productbokser spesifikt -*/
+
+
+/*- START Webshop spesifikt -*/
+
+#basketBtn {
+    width: 100%;
+}
+
+
+/*- SLUTT Webshop spesifikt -*/
+
+
+/*- START Handlevogn generelt -*/
+
+#containerBasket {
+    position: relative;
+    width: 770px;
+    height: 650px;
+    overflow: auto;
+    margin: auto;
+}
+
+#tilbakeBtn {
+    width: 100%;
+}
+
+
+/*- SLUTT Handlevogn generelt -*/
+
+
+/*- START Handlevogn spesifikt -*/
+
+.handlevogn-elementer {
+    width: 100%;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    height: 90px;
+    margin-bottom: 15px;
+    font-family: sans-serif;
+    background-color: white;
+    /*border-top: 1px solid black;*/
+    color: #2A3132;
+    font-weight: normal;
+    text-transform: capitalize;
+}
+
+.basketList {
+    font-family: sans-serif;
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#basket {
+    color: #2A3132;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+#total {
+    position: absolute;
+    bottom: 0;
+    background-color: #2A3132;
+    color: white;
+    font-size: 20px;
+}
+
+.img-basket {
+    height: 50px;
+    right: 0;
+}
+
+p-basket {
+    display: inline;
+    float: left;
+}
+
+
+/*- SLUTT Handlevogn spesifikt -*/
